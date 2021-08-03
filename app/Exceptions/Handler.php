@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +54,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+       // return parent::render($request, $exception);
+       if ($exception instanceof ModelNotFoundException) {
+        return response()->json(['message' => 'Could not find such record in model'], 404);
     }
+        if ($exception instanceof AuthenticationException) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+            ], 401);
+        }
+        if ($exception instanceof AuthorizationException) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+            ], 401);
+        }
+        if ($exception instanceof UnauthorizedHttpException) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+            ], 401);
+        }
+
+        return parent::render($request, $exception);
+
+        }
 }
