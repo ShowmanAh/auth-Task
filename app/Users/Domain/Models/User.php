@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Users\Domain\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,6 +27,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public $timestamps = false;
 
     /**
      * The attributes that should be cast to native types.
