@@ -4,9 +4,10 @@ namespace Tests;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, RefreshDatabase;
     public function setUp(): void
     {
       parent::setUp();

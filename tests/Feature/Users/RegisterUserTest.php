@@ -32,9 +32,16 @@ class RegisterUserTest extends TestCase
     }
     public function test_it_registers_user_with_correct_data()
     {
-       // Queue::fake();
-       $user = factory(User::class, 1)->create();
-       $this->jsonAs($user, 'POST', 'api/register')
-       ->assertStatus(201);
+        $user = factory(User::class)->make([
+            'name' => 'showman22',
+            'email' => 'showman22@gmail.com',
+        ]);
+        $response = $this->post(
+            '/api/register',
+            array_merge($user->toArray(), [
+                'password' => 'secret123',
+                'password_confirmation' => 'secret123',
+            ])
+        )->assertStatus(201);
     }
 }

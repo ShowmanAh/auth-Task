@@ -11,6 +11,6 @@ class LogoutUserTest extends TestCase
     public function it_logsout_user_successfully()
     {
         $user = factory(User::class)->create();
-        $this->jsonAs($user, 'POST', '/api/logout')->assertStatus(200);
+        $this->jsonAs($user, 'POST', '/api/auth/logout')->assertStatus(200);
     }
 }
