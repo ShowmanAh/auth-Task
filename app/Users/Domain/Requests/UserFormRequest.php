@@ -12,10 +12,8 @@ class UserFormRequest extends APIRequest
             'name' => 'required|min:6|max:32|string|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|max:32|confirmed',
-            'slug' => [
-                'required',
-                'exists:roles,slug',
-            ],
+
         ];
+
     }
 }

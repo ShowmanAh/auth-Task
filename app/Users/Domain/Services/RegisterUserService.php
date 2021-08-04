@@ -12,7 +12,6 @@ class RegisterUserService implements ServiceInterface
 {
     public function handle($data = [])
     {
-       // dd('sdg');
         $pipes = [
             CreateUserPipeline::class,
             AttachUserToRolePipeline::class,
