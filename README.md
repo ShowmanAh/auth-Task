@@ -35,8 +35,8 @@ The application was built using [Laravel 7], so you should ensure you have it in
  php artisan db:seed
 ```
 
-3. Run the application and go to(http://localhost/Task/api/login) to see the application running
-4. Api docs ()
+3. Run the application and go to(http://localhost/Task) to see the application running
+4. Api docs (https://documenter.getpostman.com/view/4171245/TzshHQeS)
 
 ### License:
 This software is licensed under the [MIT License](https://laravel-guide.readthedocs.io/en/latest/license/).
