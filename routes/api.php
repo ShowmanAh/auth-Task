@@ -20,3 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 **/
 Route::post('register', \Api\User\RegisterUserController::class);
 Route::post('login', \Api\User\LoginUserController::class);
+Route::get('logout', \Api\User\LogoutUserController::class);
+Route::group(['prefix' => 'auth',  'middleware' => 'auth:api'], function()
+{
+    Route::post('createUser', \Api\User\CreateUserController::class);
+});
+
+
